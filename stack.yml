@@ -1,0 +1,14 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  of-delay:
+    lang: python3-http
+    handler: ./delay
+    image: embano1/of-delay:latest
+    environment:
+      write_debug: true
+      read_debug: true
+    annotations:
+      topic: "DrsVmPoweredOnEvent,VmPoweredOnEvent,VmPoweredOffEvent"
